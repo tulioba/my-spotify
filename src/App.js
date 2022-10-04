@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-// BrowserRouter Link Switch
+import { Route, BrowserRouter } from 'react-router-dom';
+// Link Switch
 import Album from './components/Album';
 import Favorites from './components/Favorites';
 import Login from './components/Login';
@@ -12,16 +12,17 @@ import Search from './components/Search';
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <p>JUST A NORMAL HEALTHY BOY</p>
-        <Route path="/" component={ Login } />
-        <Route path="/search" component={ Search } />
-        <Route path="/album" component={ Album } />
-        <Route path="/favorites" component={ Favorites } />
-        <Route path="/profile" component={ Profile } />
-        <Route path="/profile/edit" component={ ProfileEdit } />
-        <Route path="" component={ NotFound } />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Route exact path="/" component={ Login } />
+          <Route exact path="/search" component={ Search } />
+          <Route exact path="/album/:id" component={ Album } />
+          <Route exact path="/favorites" component={ Favorites } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/profile/edit" component={ ProfileEdit } />
+          <Route exact path="" component={ NotFound } />
+        </div>
+      </BrowserRouter>
     );
   }
 }
