@@ -13,13 +13,12 @@ class Header extends React.Component {
   }
 
   async componentDidMount() {
-    const { user } = this.state;
     this.setState({
       isLoading: true,
     });
     const userName = await getUser();
     this.setState({
-      user: userName,
+      user: userName.name,
       isLoading: false,
     });
   }
@@ -29,11 +28,13 @@ class Header extends React.Component {
     return (
       <header data-testid="header-component">
         { isLoading ? <Loading />
-          : <h2 data-testid="header-user-name">
-            {' '}
-            { user }
-            {' '}
-            </h2>}
+          : (
+            <h2 data-testid="header-user-name">
+              {' '}
+              { user }
+              {' '}
+            </h2>
+          )}
       </header>
     );
   }
