@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { createUser } from '../services/userAPI';
+import { createUser, getUser } from '../services/userAPI';
 import Loading from './Loading';
 
 // import PropTypes from 'prop-types';
@@ -24,6 +24,16 @@ class Login extends React.Component {
     }, () => this.ableButton());
   };
 
+  ableButton = () => {
+    const { loginName } = this.state;
+    const number = 3;
+    if (loginName.length >= number) {
+      this.setState({
+        isDisable: false,
+      });
+    }
+  };
+
   onClick = async () => {
     const { loginName } = this.state;
     this.setState({
@@ -33,16 +43,7 @@ class Login extends React.Component {
     this.setState({
       redirect: true,
     });
-  };
-
-  ableButton = () => {
-    const { loginName } = this.state;
-    const number = 3;
-    if (loginName.length >= number) {
-      this.setState({
-        isDisable: false,
-      });
-    }
+    getUser();
   };
 
   render() {
