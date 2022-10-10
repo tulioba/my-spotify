@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-// Link
 import Album from './components/Album';
 import Favorites from './components/Favorites';
 import Login from './components/Login';
@@ -8,6 +7,7 @@ import NotFound from './components/NotFount';
 import Profile from './components/Profile';
 import ProfileEdit from './components/ProfileEdit';
 import Search from './components/Search';
+import './index.css';
 
 class App extends React.Component {
   render() {
