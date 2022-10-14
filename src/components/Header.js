@@ -42,7 +42,6 @@ class Header extends React.Component {
             </>
           )}
       </header>
-      // <Link to="/">Home</Link></li>
     );
   }
 }
