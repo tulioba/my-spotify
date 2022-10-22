@@ -4,6 +4,7 @@ import getMusics from '../services/musicsAPI';
 // import Loading from './Loading';
 import Header from './Header';
 import MusicCards from './MusicCard';
+import Loading from './Loading';
 
 class Album extends React.Component {
   constructor() {
@@ -11,13 +12,13 @@ class Album extends React.Component {
 
     this.state = {
       music: [],
-      showLoading: true,
+      showLoading: false,
     };
   }
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    console.log(id);
+    // console.log(id);
     const showMusics = await getMusics(id);
     // const { music } = this.state;
     this.setState({
@@ -34,8 +35,9 @@ class Album extends React.Component {
     const firstItem = music.filter((element) => element === music[0]);
     const allMusic = music.filter((element) => element !== music[0]);
     return (
-      <div data-testid="page-album">
-        {/* { showLoading ? <Loading /> : */}
+      <div
+        data-testid="page-album"
+      >
         <div>
           <Header />
           { firstItem.map((song) => (
