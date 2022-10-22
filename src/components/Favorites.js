@@ -33,16 +33,16 @@ class Favorites extends React.Component {
     });
   }
 
-  // changeLoading = async () => {
-  //   this.setState({
-  //     showLoading: true,
-  //   });
-  //   const getFavSongs = await getFavoriteSongs();
-  //   // console.log(getFavSongs);
-  //   this.setState({
-  //     showLoading: false,
-  //   });
-  // };
+  changeLoading = async () => {
+    this.setState({
+      showLoading: true,
+    });
+    // const getFavSongs = await getFavoriteSongs();
+    // console.log(getFavSongs);
+    this.setState({
+      showLoading: false,
+    });
+  };
 
   render() {
     const { showLoading, songs } = this.state;
@@ -51,7 +51,7 @@ class Favorites extends React.Component {
         <Header />
         { showLoading ? <Loading />
           : (
-            <div>
+            <div onClick={ this.changeLoading }>
               { songs.map((song) => <MusicCard key={ song.trackId } sing={ song } />)}
             </div>)}
       </div>
