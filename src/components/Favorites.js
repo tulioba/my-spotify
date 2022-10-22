@@ -33,14 +33,9 @@ class Favorites extends React.Component {
     });
   }
 
-  changeLoading = async () => {
+  changeLoading = (valor) => {
     this.setState({
-      showLoading: true,
-    });
-    // const getFavSongs = await getFavoriteSongs();
-    // console.log(getFavSongs);
-    this.setState({
-      showLoading: false,
+      showLoading: valor,
     });
   };
 
@@ -51,8 +46,14 @@ class Favorites extends React.Component {
         <Header />
         { showLoading ? <Loading />
           : (
-            <div onClick={ this.changeLoading }>
-              { songs.map((song) => <MusicCard key={ song.trackId } sing={ song } />)}
+            <div>
+              {
+                songs.map((song) => (<MusicCard
+                  key={ song.trackId }
+                  sing={ song }
+                  changeLoading={ this.changeLoading }
+                />))
+              }
             </div>)}
       </div>
     );

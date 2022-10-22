@@ -23,13 +23,16 @@ class MusicCard extends React.Component {
   }
 
   addFavorite = async (event) => {
+    const { changeLoading } = this.props;
     this.setState({
       showLoading: true,
       check: event.target.checked,
     });
     const { sing } = this.props;
     if (!event.target.checked) {
+      changeLoading(true); // ALTERA O SHOWLOADING DO COMPONENTE PAI (FAVORITE)
       await removeSong(sing);
+      changeLoading(false); // ALTERA O SHOWLOADING DO COMPONENTE PAI (FAVORITE)
     } else {
       await addSong(sing);
     }
@@ -83,5 +86,6 @@ class MusicCard extends React.Component {
 
 MusicCard.propTypes = {
   sing: PropTypes.shape().isRequired,
+  changeLoading: PropTypes.func.isRequired,
 };
 export default MusicCard;

@@ -33,6 +33,10 @@ class Album extends React.Component {
     // localStorage.setItem('songs', JSON.stringify(showMusics));
   }
 
+  changeLoading = (valor) => {
+    console.log(valor);
+  };
+
   render() {
     // const { match: { params: { id } } } = this.props;
     const { music } = this.state;
@@ -59,7 +63,13 @@ class Album extends React.Component {
               { song.collectionName }
             </p>))}
           <div>
-            { allMusic.map((song) => <MusicCards key={ song.trackId } sing={ song } />) }
+            {
+              allMusic.map((song) => (<MusicCards
+                key={ song.trackId }
+                sing={ song }
+                changeLoading={ this.changeLoading }
+              />))
+            }
           </div>
         </div>
       </div>
