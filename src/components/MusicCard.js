@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusiCards extends React.Component {
@@ -11,8 +11,10 @@ class MusiCards extends React.Component {
   };
 
   async componentDidMount() {
+    const { compareSongs } = this.state;
     const { sing } = this.props;
     const getFavSongs = await getFavoriteSongs();
+    // console.log(compareSongs);
     const favorites = getFavSongs.some((songs) => songs.trackId === sing.trackId);
     if (favorites === true) {
       this.setState({
@@ -21,13 +23,30 @@ class MusiCards extends React.Component {
     }
   }
 
+  // compareSongs = async () => {
+  //   const getFavSongs = await getFavoriteSongs(sing);
+  //   console.log(await getFavSongs);
+  //   const favorites = getFavSongs.some((songs) => songs.trackId === sing.trackId);
+  //   if (favorites === true) {
+  //     this.setState({
+  //       check: false,
+  //     });
+  //   }
+  // };
+
   addFavorite = async (event) => {
     this.setState({
       showLoading: true,
       check: event.target.checked,
     });
     const { sing } = this.props;
-    await addSong(sing);
+    console.log(event.target.checked);
+    if (event.target.check) { // SE TRUE CHAMA A ADDSONG, SE FALSO CHAMA A REMOVESONG, NÃO O INVERSO, CONNTRA INTUITIVO
+      await addSong(sing);
+    } else {
+      await removeSong(sing);
+    }
+    // await addSong(sing);
     this.setState({
       showLoading: false,
     });
@@ -67,7 +86,7 @@ class MusiCards extends React.Component {
                 onChange={ this.addFavorite }
               />
             </label>
-          </div>}
+            </div>}
       </div>
     );
   }
