@@ -5,6 +5,7 @@ import getMusics from '../services/musicsAPI';
 import Header from './Header';
 import MusicCards from './MusicCard';
 import Loading from './Loading';
+// import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
@@ -15,8 +16,12 @@ class Album extends React.Component {
       showLoading: false,
     };
   }
+  // favorite_songs
 
   async componentDidMount() {
+    const songsSaved = JSON.parse(localStorage.getItem('favorite_songs'));
+    // const getFavSongs = await getFavoriteSongs();
+    // console.log(getFavSongs);
     const { match: { params: { id } } } = this.props;
     // console.log(id);
     const showMusics = await getMusics(id);

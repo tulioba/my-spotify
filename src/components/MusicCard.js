@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusiCards extends React.Component {
@@ -9,6 +9,17 @@ class MusiCards extends React.Component {
     showLoading: false,
     check: false,
   };
+
+  async componentDidMount() {
+    const { sing } = this.props;
+    const getFavSongs = await getFavoriteSongs();
+    const favorites = getFavSongs.some((songs) => songs.trackId === sing.trackId);
+    if (favorites === true) {
+      this.setState({
+        check: true,
+      });
+    }
+  }
 
   addFavorite = async (event) => {
     this.setState({
@@ -20,13 +31,11 @@ class MusiCards extends React.Component {
     this.setState({
       showLoading: false,
     });
-    console.log(event.target.checked);
   };
 
   render() {
     const { music, showLoading, check } = this.state;
     const { sing } = this.props;
-    // const songsSaved = JSON.parse(localStorage.getItem('songs'));
     return (
       <div>
         { showLoading ? <Loading />
