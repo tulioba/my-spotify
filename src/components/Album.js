@@ -4,7 +4,8 @@ import getMusics from '../services/musicsAPI';
 // import Loading from './Loading';
 import Header from './Header';
 import MusicCards from './MusicCard';
-import Loading from './Loading';
+// import Loading from './Loading';
+import Favorites from './Favorites';
 // import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
@@ -19,7 +20,6 @@ class Album extends React.Component {
   // favorite_songs
 
   async componentDidMount() {
-    const songsSaved = JSON.parse(localStorage.getItem('favorite_songs'));
     // const getFavSongs = await getFavoriteSongs();
     // console.log(getFavSongs);
     const { match: { params: { id } } } = this.props;
@@ -36,6 +36,7 @@ class Album extends React.Component {
   render() {
     // const { match: { params: { id } } } = this.props;
     const { showLoading, music } = this.state;
+    console.log(showLoading);
     // const data = music[0];
     const firstItem = music.filter((element) => element === music[0]);
     const allMusic = music.filter((element) => element !== music[0]);
@@ -63,6 +64,7 @@ class Album extends React.Component {
             { allMusic.map((song) => <MusicCards key={ song.trackId } sing={ song } />) }
           </div>
         </div>
+        <Favorites sing={ allMusic } />
         {/* )} */}
       </div>
     );
