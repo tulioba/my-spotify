@@ -38,7 +38,7 @@ class Favorites extends React.Component {
   //     showLoading: true,
   //   });
   //   const getFavSongs = await getFavoriteSongs();
-  //   console.log(getFavSongs);
+  //   // console.log(getFavSongs);
   //   this.setState({
   //     showLoading: false,
   //   });
@@ -51,7 +51,6 @@ class Favorites extends React.Component {
         <Header />
         { showLoading ? <Loading />
           : (
-            // onClick={ this.changeLoading }
             <div>
               { songs.map((song) => <MusicCard key={ song.trackId } sing={ song } />)}
             </div>)}

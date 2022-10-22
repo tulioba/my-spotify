@@ -5,7 +5,7 @@ import getMusics from '../services/musicsAPI';
 import Header from './Header';
 import MusicCards from './MusicCard';
 // import Loading from './Loading';
-import Favorites from './Favorites';
+// import Favorites from './Favorites';
 // import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
@@ -14,7 +14,7 @@ class Album extends React.Component {
 
     this.state = {
       music: [],
-      showLoading: false,
+      // showLoading: false,
     };
   }
   // favorite_songs
@@ -28,16 +28,14 @@ class Album extends React.Component {
     // const { music } = this.state;
     this.setState({
       music: showMusics,
-      showLoading: false,
+      // showLoading: false,
     });
     // localStorage.setItem('songs', JSON.stringify(showMusics));
   }
 
   render() {
     // const { match: { params: { id } } } = this.props;
-    const { showLoading, music } = this.state;
-    console.log(showLoading);
-    // const data = music[0];
+    const { music } = this.state;
     const firstItem = music.filter((element) => element === music[0]);
     const allMusic = music.filter((element) => element !== music[0]);
     return (
@@ -64,8 +62,6 @@ class Album extends React.Component {
             { allMusic.map((song) => <MusicCards key={ song.trackId } sing={ song } />) }
           </div>
         </div>
-        <Favorites sing={ allMusic } />
-        {/* )} */}
       </div>
     );
   }
@@ -74,7 +70,7 @@ class Album extends React.Component {
 Album.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
     }),
   }).isRequired,
 };

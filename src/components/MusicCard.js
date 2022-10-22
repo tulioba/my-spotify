@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
-class MusiCards extends React.Component {
+class MusicCard extends React.Component {
   state = {
     showLoading: false,
     check: false,
@@ -81,12 +81,7 @@ class MusiCards extends React.Component {
   }
 }
 
-MusiCards.propTypes = {
-  sing: PropTypes.string.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }),
-  }).isRequired,
+MusicCard.propTypes = {
+  sing: PropTypes.shape().isRequired,
 };
-export default MusiCards;
+export default MusicCard;
