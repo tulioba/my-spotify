@@ -8,26 +8,26 @@ class Profile extends React.Component {
     super();
 
     this.state = {
-      showLoading: false,
+      // showLoading: false,
       userInfo: [],
     };
   }
 
   async componentDidMount() {
-    this.setState({
-      showLoading: true,
-    });
+    // this.setState({
+    //   showLoading: true,
+    // });
     const user = await getUser();
     // console.log(user);
     this.setState({
-      showLoading: false,
+      // showLoading: false,
       userInfo: user,
     });
   }
 
   render() {
-    const { userInfo, showLoading } = this.state;
-    // console.log(userInfo);
+    const { userInfo } = this.state;
+    userInfo.forEach((user) => console.log(user));
     return (
       <div data-testid="page-profile">
         <Header />
