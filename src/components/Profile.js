@@ -42,7 +42,7 @@ class Profile extends React.Component {
           <h2>{ userInfo.email }</h2>
           <h2>{ userInfo.description }</h2>
           <img src="url-to-image" alt="chaves" data-testid="profile-image" />
-          <Link to="/profile/edit" data-testid="link-to-profile">Editar perfil</Link>
+          <Link to="/profile/edit">Editar perfil</Link>
         </div>
       </div>
     );
