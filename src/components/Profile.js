@@ -27,7 +27,7 @@ class Profile extends React.Component {
 
   render() {
     const { userInfo } = this.state;
-    userInfo.forEach((user) => console.log(user));
+    console.log(userInfo);
     return (
       <div data-testid="page-profile">
         <Header />
