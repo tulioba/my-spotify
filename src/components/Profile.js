@@ -8,31 +8,32 @@ class Profile extends React.Component {
     super();
 
     this.state = {
-      // showLoading: false,
+      showLoading: false,
       userInfo: [],
     };
   }
 
   async componentDidMount() {
-    // this.setState({
-    //   showLoading: true,
-    // });
+    this.setState({
+      showLoading: true,
+    });
     const user = await getUser();
     // console.log(user);
     this.setState({
-      // showLoading: false,
+      showLoading: false,
       userInfo: user,
     });
   }
 
   render() {
-    const { userInfo } = this.state;
-    console.log(userInfo);
+    const { userInfo, showLoading } = this.state;
+    // console.log(userInfo);
     return (
       <div data-testid="page-profile">
         <Header />
         <div>
-          { userInfo.map((user) => <h3 key={ user.name }>{ user.name }</h3>)}
+          {/* { userInfo.map((user) => <h3 key={ user.name }>{ user.name }</h3>)} */}
+          <h2>to de ult</h2>
         </div>
       </div>
     );
