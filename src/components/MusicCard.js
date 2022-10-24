@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
+const time = 2000;
+
 class MusicCard extends React.Component {
   state = {
     showLoading: false,
@@ -32,7 +34,8 @@ class MusicCard extends React.Component {
     if (!event.target.checked) {
       changeLoading(true); // ALTERA O SHOWLOADING DO COMPONENTE PAI (FAVORITE)
       await removeSong(sing);
-      changeLoading(false); // ALTERA O SHOWLOADING DO COMPONENTE PAI (FAVORITE)
+      setTimeout(() => { changeLoading(false); }, time);
+      // changeLoading(false); // ALTERA O SHOWLOADING DO COMPONENTE PAI (FAVORITE)
     } else {
       await addSong(sing);
     }
