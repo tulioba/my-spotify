@@ -30,10 +30,6 @@ class Profile extends React.Component {
 
   render() {
     const { userInfo } = this.state;
-    console.log(userInfo.name);
-    console.log(userInfo.email);
-    console.log(userInfo.description);
-    // console.log(userInfo.image);
     return (
       <div data-testid="page-profile">
         <Header />
