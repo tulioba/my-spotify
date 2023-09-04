@@ -33,8 +33,8 @@ class MusicCard extends React.Component {
     const { sing } = this.props;
     if (!event.target.checked) {
       changeLoading(true); // ALTERA O SHOWLOADING DO COMPONENTE PAI (FAVORITE)
-      await removeSong(sing);
       setTimeout(() => { changeLoading(false); }, time);
+      await removeSong(sing);
       // changeLoading(false); // ALTERA O SHOWLOADING DO COMPONENTE PAI (FAVORITE)
     } else {
       await addSong(sing);
